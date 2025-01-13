@@ -1,0 +1,10 @@
+Legend of the used statistics
+*****************************
+
+Statistic             Legend
+--------------------------------------------------------------
+alive.rpl           : Nb alive replicates
+n.adlt.rs           : Rs (Mousadik & Petit, 1996)(adult, ntrl)
+n.adlt.fst.wc_p1-2  : Fst(Weir & Cockerham, 1984)(adult, ntrl) between patch 1 and 2
+n.adlt.fst.wc_p1-3  : Fst(Weir & Cockerham, 1984)(adult, ntrl) between patch 1 and 3
+n.adlt.fst.wc_p2-3  : Fst(Weir & Cockerham, 1984)(adult, ntrl) between patch 2 and 3
