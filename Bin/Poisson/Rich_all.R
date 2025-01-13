@@ -1,5 +1,5 @@
 setwd(".")  # Repertoire du code
-#5959595959595
+
 ######## Chargement des fichiers ########
 trutta <- read.table("../../Trutta/trutta_mean.txt", header = TRUE) 
 gobio <- read.table("../../Gobio/gobio_mean.txt", header = TRUE)  
