@@ -4,7 +4,7 @@
 #       Commit N° : ce61fbd           #
 #                                           #
 #              Simulation log               #
-# simulation started on 14-01-2025 09:51:46 #
+# simulation started on 14-01-2025 10:36:25 #
 #              (log as input)               #
 #############################################
 
@@ -15,7 +15,7 @@ all_combinations 0
 filename trutta
 folder Trutta
 replicates 10
-seed {1736844706 16483965}
+seed {1736847385 15685481}
 
 ## metapop
 coalescence 0
@@ -37,7 +37,7 @@ mean_fecundity 10
 
 ## save_stats
 stat {n.adlt.rs n.adlt.fst.wc_pair}
-stat_log_time 4
+stat_log_time 5
 
 ## dispersal
 dispersal_rate (1{{0 0.05 0}{0.05 0 0.05}{0 0.05 0}} , 4000{{0 0 0}{0 0 0.05}{0 0.05 0}} , 4023{{0 0 0}{0 0 0}{0 0 0}})
@@ -47,7 +47,7 @@ regulation_model_adults 1
 
 
 #############################################
-#  simulation ended on 14-01-2025 09:51:54  #
+#  simulation ended on 14-01-2025 10:36:32  #
 #                                           #
-#  duration of the simulation was 00:00:08  #
+#  duration of the simulation was 00:00:07  #
 #############################################

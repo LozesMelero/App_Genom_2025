@@ -4,7 +4,7 @@
 #       Commit N° : ce61fbd           #
 #                                           #
 #              Simulation log               #
-# simulation started on 14-01-2025 09:53:27 #
+# simulation started on 14-01-2025 10:37:13 #
 #              (log as input)               #
 #############################################
 
@@ -15,7 +15,7 @@ all_combinations 0
 filename gobio
 folder Gobio
 replicates 10
-seed {1736844807 30039253}
+seed {1736847433 29337179}
 
 ## metapop
 coalescence 0
@@ -37,7 +37,7 @@ mean_fecundity 10
 
 ## save_stats
 stat {n.adlt.rs n.adlt.fst.wc_pair}
-stat_log_time 4
+stat_log_time 5
 
 ## dispersal
 dispersal_rate (1{{0 0.02 0}{0.02 0 0.02}{0 0.02 0}} , 4000{{0 0 0}{0 0 0.02}{0 0.02 0}} , 4046{{0 0 0}{0 0 0}{0 0 0}})
@@ -47,7 +47,7 @@ regulation_model_adults 1
 
 
 #############################################
-#  simulation ended on 14-01-2025 09:53:42  #
+#  simulation ended on 14-01-2025 10:37:27  #
 #                                           #
-#  duration of the simulation was 00:00:15  #
+#  duration of the simulation was 00:00:14  #
 #############################################
