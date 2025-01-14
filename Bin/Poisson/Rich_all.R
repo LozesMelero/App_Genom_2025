@@ -34,9 +34,9 @@ septimaniae <- species_list$septimaniae$data
 
 
 #### Données entre 1750 et 2025 ####
-gobio_recent <- subset(gobio, year >= 1725 & year <= 2025)
-trutta_recent <- subset(trutta, year >= 1725 & year <= 2025)
-septimaniae_recent <- subset(septimaniae, year >= 1725 & year <= 2025)
+gobio_recent <- subset(gobio, year >= 1725 & year <= 2031)
+trutta_recent <- subset(trutta, year >= 1725 & year <= 2041)
+septimaniae_recent <- subset(septimaniae, year >= 1725 & year <= 2031)
 
 #_________________________________________________________________________________________________
 
