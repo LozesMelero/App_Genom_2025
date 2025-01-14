@@ -126,7 +126,8 @@ trutta_subset <- trutta_recent[, c("generation", "year", "fst_trutta_1_2", "fst_
 # Fusionner les tableaux par "generation" et "year"
 merged_table <- Reduce(function(x, y) merge(x, y, by = "generation", all = TRUE),
                        list(gobio_subset, septimaniae_subset, trutta_subset))
-
+## Atttention, ce tableau va servir uniquement pour créer le fond blanc du graphique.
+## Il y a des incohérences (normales) du fait des temps de gen ≠ entre sp.
 
 
 
