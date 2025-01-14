@@ -108,9 +108,9 @@ mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "c)" en haut 
 
 
 ######## Fst ########
-#### Préparation data ####
+#### Visualisation data ####
 
-# Renommer les colonnes de chaque tableau pour éviter les conflits pour merge
+# Renommer les colonnes de chaque tableau pour éviter les conflits 
 colnames(gobio_recent)[colnames(gobio_recent) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
   c("fst_gobio_1_2", "fst_gobio_1_3", "fst_gobio_2_3")
 colnames(septimaniae_recent)[colnames(septimaniae_recent) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
@@ -118,16 +118,9 @@ colnames(septimaniae_recent)[colnames(septimaniae_recent) %in% c("n.adlt.fst.wc_
 colnames(trutta_recent)[colnames(trutta_recent) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
   c("fst_trutta_1_2", "fst_trutta_1_3", "fst_trutta_2_3")
 
-# Colonnes pertinentes
-gobio_subset <- gobio_recent[, c("generation", "year", "fst_gobio_1_2", "fst_gobio_1_3", "fst_gobio_2_3")]
-septimaniae_subset <- septimaniae_recent[, c("generation", "year", "fst_septimaniae_1_2", "fst_septimaniae_1_3", "fst_septimaniae_2_3")]
-trutta_subset <- trutta_recent[, c("generation", "year", "fst_trutta_1_2", "fst_trutta_1_3", "fst_trutta_2_3")]
 
-# Fusionner les tableaux par "generation" et "year"
-merged_table <- Reduce(function(x, y) merge(x, y, by = "generation", all = TRUE),
-                       list(gobio_subset, septimaniae_subset, trutta_subset))
-## Atttention, ce tableau va servir uniquement pour créer le fond blanc du graphique.
-## Il y a des incohérences (normales) du fait des temps de gen ≠ entre sp.
+
+
 
 
 
