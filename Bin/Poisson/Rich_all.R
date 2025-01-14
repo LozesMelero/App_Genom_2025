@@ -42,15 +42,19 @@ septimaniae_recent <- subset(septimaniae, year >= 1725 & year <= 2031)
 
 
 plot(trutta$n.adlt.rs ~ trutta$generation,
-     xlab = "Year",
+     xlab = "Gen",
      ylab = "Number of Alleles per Locus",
-     main = "Allelic Richness Over Time")
+     main = "Trutta Allelic Richness Over Time")
 
 plot(gobio$n.adlt.rs ~ gobio$generation,
-     xlab = "Year",
+     xlab = "Gen",
      ylab = "Number of Alleles per Locus",
-     main = "Allelic Richness Over Time")
+     main = "Gobio Allelic Richness Over Time")
 
+plot(septimaniae$n.adlt.rs ~ septimaniae$generation,
+     xlab = "Gen",
+     ylab = "Number of Alleles per Locus",
+     main = "Septimaniae Allelic Richness Over Time")
 
 
 ######## All. Richness ########
