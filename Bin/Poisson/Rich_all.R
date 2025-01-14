@@ -106,6 +106,7 @@ axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 35))
 abline(v = c(1861, 1953), col = "red1", lty = c(5,3),lwd=1.5)
 mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "c)" en haut à gauche
 
+#_________________________________________________________________________________________________
 
 ######## Fst ########
 #### Visualisation data ####
@@ -135,7 +136,7 @@ plot(1, type = "n",
      ylab = expression(italic(F[ST])), 
      xlim = x_lim, 
      ylim = y_lim, 
-     cex.lab = 1.1, 
+     cex.lab = 1.3, 
      bty = "l", 
      xaxt = "n")
 axis(1, at = seq(min(trutta_recent$year)-1, 2025, by = 35))
@@ -160,6 +161,7 @@ mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)
 
 
 #### Barrage B: Fst entre pop 2 et 3 ####
+
 max(c(max(gobio_recent$fst_gobio_2_3), ## Définir la y lim MAX de notre graph
       max(septimaniae_recent$fst_septimaniae_2_3),
       max(trutta_recent$fst_trutta_2_3)))
@@ -182,7 +184,7 @@ plot(1, type = "n",
      ylab = expression(italic(F[ST])), 
      xlim = x_lim, 
      ylim = y_lim, 
-     cex.lab = 1.1, 
+     cex.lab = 1.3, 
      bty = "l", 
      xaxt = "n")
 axis(1, at = seq(min(trutta_recent$year)-1, 2025, by = 35))
