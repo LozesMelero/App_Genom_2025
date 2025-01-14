@@ -206,6 +206,7 @@ points(trutta_recent$year, trutta_recent$fst_trutta_ratio,
 abline(v = 1953, col = "red1", lty = 3, lwd = 1.5)
 mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
 
+1+1
 
 
 
