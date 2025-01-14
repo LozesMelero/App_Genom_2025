@@ -127,6 +127,43 @@ min(c(min(gobio_recent$fst_gobio_1_2), ## Définir la y lim MIN de notre graph
       min(septimaniae_recent$fst_septimaniae_1_2),
       min(trutta_recent$fst_trutta_1_2)))
 
+## Graphique ##
+# Définir les limites des axes
+x_lim <- c(min(c(gobio_recent$year, septimaniae_recent$year, trutta_recent$year)), 2025)
+y_lim <- c(min(c(min(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
+                 min(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
+                 min(trutta_recent$fst_trutta_1_2, na.rm = TRUE))),
+           max(c(max(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
+                 max(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
+                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.01)
+
+# Graph vide avec bonnes limites
+plot(1, type = "n", 
+     xlab = "Années", 
+     ylab = expression(F[ST]), 
+     xlim = x_lim, 
+     ylim = y_lim, 
+     cex.lab = 1.3, 
+     bty = "l", 
+     xaxt = "n")
+axis(1, at = seq(min(trutta_recent$year)-1, 2025, by = 35))
+
+# Points pour chaque espèce
+points(gobio_recent$year, gobio_recent$fst_gobio_1_2, 
+       col = "darkgoldenrod1", pch = 16, type = "b", lwd = 1.5) 
+points(septimaniae_recent$year, septimaniae_recent$fst_septimaniae_1_2, 
+       col = "blue", pch = 17, type = "b", lwd = 1.5)
+points(trutta_recent$year, trutta_recent$fst_trutta_1_2, 
+       col = "darkgreen", pch = 18, type = "b", lwd = 1.5)
+abline(v = c(1861, 1953), col = "red1", lty = c(5, 3), lwd = 1.5)
+legend("topleft", 
+       legend = c(expression(italic("C. gobio")), 
+                  expression(italic("P. septimaniae")), 
+                  expression(italic("S. trutta"))),
+       col = c("darkgoldenrod1", "blue", "darkgreen"), 
+       pch = c(16, 17, 18), 
+       lty = 1,
+       bty="n")
 
 
 
