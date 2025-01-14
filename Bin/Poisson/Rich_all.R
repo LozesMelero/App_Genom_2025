@@ -181,7 +181,7 @@ y_lim <- c(min(c(min(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
                  min(trutta_recent$fst_trutta_1_2, na.rm = TRUE))),
            max(c(max(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
                  max(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
-                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.0525)
+                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.0525) # pour avoir même echelle en Y que graphe a)
 
 par(mgp = c(2.5, 1, 0)) 
 
