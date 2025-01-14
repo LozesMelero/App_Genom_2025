@@ -121,19 +121,25 @@ colnames(trutta_recent)[colnames(trutta_recent) %in% c("n.adlt.fst.wc_p1.2", "n.
 
 #### Barrage A: Fst entre pop 1 et 2 ####
 ## Graphique ##
+#  Fst / (1 - Fst)
+gobio_recent$fst_gobio_ratio <- gobio_recent$fst_gobio_1_2 / (1 - gobio_recent$fst_gobio_1_2)
+septimaniae_recent$fst_septimaniae_ratio <- septimaniae_recent$fst_septimaniae_1_2 / (1 - septimaniae_recent$fst_septimaniae_1_2)
+trutta_recent$fst_trutta_ratio <- trutta_recent$fst_trutta_1_2 / (1 - trutta_recent$fst_trutta_1_2)
+
 # Définir les limites des axes
 x_lim <- c(min(c(gobio_recent$year, septimaniae_recent$year, trutta_recent$year)), 2025)
-y_lim <- c(min(c(min(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
-                 min(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
-                 min(trutta_recent$fst_trutta_1_2, na.rm = TRUE))),
-           max(c(max(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
-                 max(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
-                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.01)
+y_lim <- c(min(c(min(gobio_recent$fst_gobio_ratio, na.rm = TRUE),
+        min(septimaniae_recent$fst_septimaniae_ratio, na.rm = TRUE),
+        min(trutta_recent$fst_trutta_ratio, na.rm = TRUE))),
+        max(c(max(gobio_recent$fst_gobio_ratio, na.rm = TRUE),
+        max(septimaniae_recent$fst_septimaniae_ratio, na.rm = TRUE),
+        max(trutta_recent$fst_trutta_ratio, na.rm = TRUE)))+0.01)
 
 # Graph vide avec bonnes limites
+par(mgp = c(2.5, 1, 0))
 plot(1, type = "n", 
      xlab = "Années", 
-     ylab = expression(italic(F[ST])), 
+     ylab = expression(italic(F[ST]/(1 - F[ST]))), 
      xlim = x_lim, 
      ylim = y_lim, 
      cex.lab = 1.3, 
@@ -142,7 +148,7 @@ plot(1, type = "n",
 axis(1, at = seq(min(trutta_recent$year)-1, 2025, by = 35))
 
 # Points pour chaque espèce
-points(gobio_recent$year, gobio_recent$fst_gobio_1_2, 
+points(gobio_recent$year, gobio_recent$fst_gobio_1_2 / (1 - gobio_recent$fst_gobio_1_2), 
        col = "darkgoldenrod1", pch = 16, type = "b", lwd = 1.5) 
 points(septimaniae_recent$year, septimaniae_recent$fst_septimaniae_1_2, 
        col = "blue", pch = 17, type = "b", lwd = 1.5)
@@ -156,48 +162,51 @@ legend("topleft",
        col = c("darkgoldenrod1", "blue", "darkgreen"), 
        pch = c(16, 17, 18), 
        lty = 1,
-       bty="n")
+       bty="n",
+       cex=1.3)
 mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)
 
 
 #### Barrage B: Fst entre pop 2 et 3 ####
 
-max(c(max(gobio_recent$fst_gobio_2_3), ## Définir la y lim MAX de notre graph
-      max(septimaniae_recent$fst_septimaniae_2_3),
-      max(trutta_recent$fst_trutta_2_3)))
+## Fst / (1 - Fst)
+gobio_recent$fst_gobio_ratio <- gobio_recent$fst_gobio_2_3 / (1 - gobio_recent$fst_gobio_2_3)
+septimaniae_recent$fst_septimaniae_ratio <- septimaniae_recent$fst_septimaniae_2_3 / (1 - septimaniae_recent$fst_septimaniae_2_3)
+trutta_recent$fst_trutta_ratio <- trutta_recent$fst_trutta_2_3 / (1 - trutta_recent$fst_trutta_2_3)
 
-min(c(min(gobio_recent$fst_gobio_2_3), ## Définir la y lim MIN de notre graph
-      min(septimaniae_recent$fst_septimaniae_2_3),
-      min(trutta_recent$fst_trutta_2_3)))
-
-## Graphique ##
-# Définir les limites des axes
+## limites des axes
 x_lim <- c(min(c(gobio_recent$year, septimaniae_recent$year, trutta_recent$year)), 2025)
 y_lim <- c(min(c(min(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
                  min(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
                  min(trutta_recent$fst_trutta_1_2, na.rm = TRUE))),
            max(c(max(gobio_recent$fst_gobio_1_2, na.rm = TRUE),
                  max(septimaniae_recent$fst_septimaniae_1_2, na.rm = TRUE),
-                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.01)
+                 max(trutta_recent$fst_trutta_1_2, na.rm = TRUE)))+0.0525)
+
+par(mgp = c(2.5, 1, 0)) 
+
 plot(1, type = "n", 
      xlab = "Années", 
-     ylab = expression(italic(F[ST])), 
+     ylab = " ", 
      xlim = x_lim, 
      ylim = y_lim, 
      cex.lab = 1.3, 
      bty = "l", 
      xaxt = "n")
-axis(1, at = seq(min(trutta_recent$year)-1, 2025, by = 35))
 
-points(gobio_recent$year, gobio_recent$fst_gobio_2_3, 
-       col = "darkgoldenrod1", pch = 16, type = "b", lwd = 1.5) 
-points(septimaniae_recent$year, septimaniae_recent$fst_septimaniae_2_3, 
+axis(1, at = seq(min(trutta_recent$year) - 1, 2025, by = 35))
+
+points(gobio_recent$year, gobio_recent$fst_gobio_ratio, 
+       col = "darkgoldenrod1", pch = 16, type = "b", lwd = 1.5)
+points(septimaniae_recent$year, septimaniae_recent$fst_septimaniae_ratio, 
        col = "blue", pch = 17, type = "b", lwd = 1.5)
-points(trutta_recent$year, trutta_recent$fst_trutta_2_3, 
+points(trutta_recent$year, trutta_recent$fst_trutta_ratio, 
        col = "darkgreen", pch = 18, type = "b", lwd = 1.5)
 
 abline(v = 1953, col = "red1", lty = 3, lwd = 1.5)
-mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2)
+mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
+
+
 
 
 
