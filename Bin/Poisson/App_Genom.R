@@ -225,3 +225,19 @@ mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
 
 
 
+#### hugo
+#Stats####q
+hist(simple1$Temp)
+mod1=lm(Temp~Period*Cell*Scen,data=simple1)
+anova(mod1)  #significatif sauf triple intéraction
+hist(residuals(mod1))
+summary(mod1) #effet intéraction dépendants agissent sur température donc toutes pentes différentes
+summary(mod1)$r.squared
+# 40%
+#faire interprétation des pentes et des valeurs aux différents temps et les temps ou les courbes se croisent.
+#température maximale augmente avec le temps, effet moins important pour micro (effet tampon accentue), pente plus important avec le scénario 585
+#intéractions deux à deux significatives pas à 3
+lillie.test(mod1$residuals)
+bptest(mod1)
+
+#F-index####
