@@ -206,247 +206,252 @@ points(trutta_recent$year, trutta_recent$fst_trutta_ratio,
 abline(v = 1953, col = "red1", lty = 3, lwd = 1.5)
 mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
 
-1+1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+######## Chargement des fichiers pour simu. futures ########
+trutta_sans_A <- read.table("../../actions_plans/Remove_bar_A/Trutta_rem_A/trutta_rem_A_mean.txt", header = TRUE) 
+gobio_sans_A <- read.table("../../actions_plans/Remove_bar_A/Gobio_rem_A/gobio_rem_A_mean.txt", header = TRUE) 
+septimaniae_sans_A <- read.table("../../actions_plans/Remove_bar_A/Septimaniae_rem_A/septimaniae_rem_A_mean.txt", header = TRUE)
+
+trutta_sans_B <- read.table("../../actions_plans/Remove_bar_B/Trutta_rem_B/trutta_rem_B_mean.txt", header = TRUE) 
+gobio_sans_B <- read.table("../../actions_plans/Remove_bar_B/Gobio_rem_B/gobio_rem_B_mean.txt", header = TRUE) 
+septimaniae_sans_B <- read.table("../../actions_plans/Remove_bar_B/Septimaniae_rem_B/septimaniae_rem_B_mean.txt", header = TRUE)
+
+
+## Dates 
+species_list <- list(
+  gobio_sans_A = list(data = gobio_sans_A, generation_time = 2),       # Cottus gobio_sans_A
+  trutta_sans_A = list(data = trutta_sans_A, generation_time = 4),     # Salmo trutta_sans_A
+  septimaniae_sans_A = list(data = septimaniae_sans_A, generation_time = 2)  # Phoxinus septimaniae_sans_A
+)
+start_year <- 1861  # Construction du premier barrage
+start_generation <- 4000  # Fin de la période d'homogénéisation des fréquences alléliques
+for (species in names(species_list)) {
+  data <- species_list[[species]]$data
+  generation_time <- species_list[[species]]$generation_time
+  data$year <- start_year + (data$generation - start_generation) * generation_time
+  species_list[[species]]$data <- data
+}
+gobio_sans_A <- species_list$gobio_sans_A$data
+trutta_sans_A <- species_list$trutta_sans_A$data
+septimaniae_sans_A <- species_list$septimaniae_sans_A$data
+
+species_list <- list(
+  gobio_sans_B = list(data = gobio_sans_B, generation_time = 2),       # Cottus gobio_sans_B
+  trutta_sans_B = list(data = trutta_sans_B, generation_time = 4),     # Salmo trutta_sans_B
+  septimaniae_sans_B = list(data = septimaniae_sans_B, generation_time = 2)  # Phoxinus septimaniae_sans_B
+)
+start_year <- 1861  # Construction du premier barrage
+start_generation <- 4000  # Fin de la période d'homogénéisation des fréquences alléliques
+for (species in names(species_list)) {
+  data <- species_list[[species]]$data
+  generation_time <- species_list[[species]]$generation_time
+  data$year <- start_year + (data$generation - start_generation) * generation_time
+  species_list[[species]]$data <- data
+}
+gobio_sans_B <- species_list$gobio_sans_B$data
+trutta_sans_B <- species_list$trutta_sans_B$data
+septimaniae_sans_B <- species_list$septimaniae_sans_B$data
+
+
+
+
+gobio_sans_A_futur <- subset(gobio_sans_A, year >= 1861 & year <= 2541)
+trutta_sans_A_futur <- subset(trutta_sans_A, year >= 1861 & year <= 2541)
+septimaniae_sans_A_futur <- subset(septimaniae_sans_A, year >= 1861 & year <= 2541)
+
+gobio_sans_B_futur <- subset(gobio_sans_B, year >= 1861 & year <= 2541)
+trutta_sans_B_futur <- subset(trutta_sans_B, year >= 1861 & year <= 2541)
+septimaniae_sans_B_futur <- subset(septimaniae_sans_B, year >= 1861 & year <= 2541)
+
+
+#### Tableau TRUTTA ####
+# Ajouter des préfixes aux colonnes pour différencier les données des trois tableaux
+colnames(trutta) <- c("generation", "alive.rpl", "richesse_trutta",
+                      "fst_1_2_trutta", "fst_1_3_trutta", "fst_2_3_trutta", "year")
+
+colnames(trutta_sans_A_futur) <- c("generation", "alive.rpl", "richesse_trutta_sans_A",
+                                   "fst_1_2_trutta_sans_A", "fst_1_3_trutta_sans_A", 
+                                   "fst_2_3_trutta_sans_A", "year")
+
+colnames(trutta_sans_B_futur) <- c("generation", "alive.rpl", "richesse_trutta_sans_B",
+                                   "fst_1_2_trutta_sans_B", "fst_1_3_trutta_sans_B", 
+                                   "fst_2_3_trutta_sans_B", "year")
+
+# Sélectionner uniquement les colonnes d'intérêt pour chaque tableau
+trutta_subset <- trutta[, c("generation", "year", 
+                            "richesse_trutta", "fst_1_2_trutta", "fst_2_3_trutta")]
+trutta_sans_A_subset <- trutta_sans_A_futur[, c("generation", "year", 
+                                                "richesse_trutta_sans_A", 
+                                                "fst_1_2_trutta_sans_A", 
+                                                "fst_2_3_trutta_sans_A")]
+trutta_sans_B_subset <- trutta_sans_B_futur[, c("generation", "year", 
+                                                "richesse_trutta_sans_B", 
+                                                "fst_1_2_trutta_sans_B", 
+                                                "fst_2_3_trutta_sans_B")]
+# Fusionner les tableaux 
+Trutta_predictions <- Reduce(function(x, y) merge(x, y, by = c("generation", "year"), all = FALSE),
+                             list(trutta_subset, trutta_sans_A_subset, trutta_sans_B_subset))
+
+#### Tableau GOBIO ####
+colnames(gobio) <- c("generation", "alive.rpl", "richesse_gobio",
+                     "fst_1_2_gobio", "fst_1_3_gobio", "fst_2_3_gobio", "year")
+
+colnames(gobio_sans_A_futur) <- c("generation", "alive.rpl", "richesse_gobio_sans_A",
+                                  "fst_1_2_gobio_sans_A", "fst_1_3_gobio_sans_A", 
+                                  "fst_2_3_gobio_sans_A", "year")
+
+colnames(gobio_sans_B_futur) <- c("generation", "alive.rpl", "richesse_gobio_sans_B",
+                                  "fst_1_2_gobio_sans_B", "fst_1_3_gobio_sans_B", 
+                                  "fst_2_3_gobio_sans_B", "year")
+
+gobio_subset <- gobio[, c("generation", "year", 
+                          "richesse_gobio", "fst_1_2_gobio", "fst_2_3_gobio")]
+gobio_sans_A_subset <- gobio_sans_A_futur[, c("generation", "year", 
+                                              "richesse_gobio_sans_A", 
+                                              "fst_1_2_gobio_sans_A", 
+                                              "fst_2_3_gobio_sans_A")]
+gobio_sans_B_subset <- gobio_sans_B_futur[, c("generation", "year", 
+                                              "richesse_gobio_sans_B", 
+                                              "fst_1_2_gobio_sans_B", 
+                                              "fst_2_3_gobio_sans_B")]
+
+Gobio_predictions <- Reduce(function(x, y) merge(x, y, by = c("generation", "year"), all = FALSE),
+                            list(gobio_subset, gobio_sans_A_subset, gobio_sans_B_subset))
+
+#### Tableau SEPTIMANIAE ####
+
+colnames(septimaniae) <- c("generation", "alive.rpl", "richesse_septimaniae",
+                           "fst_1_2_septimaniae", "fst_1_3_septimaniae", "fst_2_3_septimaniae", "year")
+
+colnames(septimaniae_sans_A_futur) <- c("generation", "alive.rpl", "richesse_septimaniae_sans_A",
+                                        "fst_1_2_septimaniae_sans_A", "fst_1_3_septimaniae_sans_A", 
+                                        "fst_2_3_septimaniae_sans_A", "year")
+
+colnames(septimaniae_sans_B_futur) <- c("generation", "alive.rpl", "richesse_septimaniae_sans_B",
+                                        "fst_1_2_septimaniae_sans_B", "fst_1_3_septimaniae_sans_B", 
+                                        "fst_2_3_septimaniae_sans_B", "year")
+
+septimaniae_subset <- septimaniae[, c("generation", "year", 
+                                      "richesse_septimaniae", "fst_1_2_septimaniae", "fst_2_3_septimaniae")]
+septimaniae_sans_A_subset <- septimaniae_sans_A_futur[, c("generation", "year", 
+                                                          "richesse_septimaniae_sans_A", 
+                                                          "fst_1_2_septimaniae_sans_A", 
+                                                          "fst_2_3_septimaniae_sans_A")]
+septimaniae_sans_B_subset <- septimaniae_sans_B_futur[, c("generation", "year", 
+                                                          "richesse_septimaniae_sans_B", 
+                                                          "fst_1_2_septimaniae_sans_B", 
+                                                          "fst_2_3_septimaniae_sans_B")]
+
+Septimaniae_predictions <- Reduce(function(x, y) merge(x, y, by = c("generation", "year"), all = FALSE),
+                                  list(septimaniae_subset, septimaniae_sans_A_subset, septimaniae_sans_B_subset))
+
+
+######## Prediction Rich. All. /sp ########
+#### S. Trutta ####
+# Définir les limites de l'axe des Y
+y_lim <- c(min(c(min(Trutta_predictions$richesse_trutta, na.rm = TRUE),
+                 min(Trutta_predictions$richesse_trutta_sans_A, na.rm = TRUE),
+                 min(Trutta_predictions$richesse_trutta_sans_B, na.rm = TRUE))),
+           max(c(max(Trutta_predictions$richesse_trutta, na.rm = TRUE),
+                 max(Trutta_predictions$richesse_trutta_sans_A, na.rm = TRUE),
+                 max(Trutta_predictions$richesse_trutta_sans_B, na.rm = TRUE))))
+
+# Tracer un graphique vide
+plot(Trutta_predictions$year, Trutta_predictions$richesse_trutta, 
+     type = "n",  # Ne trace rien, juste le cadre
+     xlab = "Années", 
+     ylab = "Nbr. All./Locus", 
+     ylim = y_lim,
+     cex.lab = 1.3, 
+     bty = "l")
+
+# Ajouter une zone grisée avant 2025
+rect(xleft = 0, xright = 2025, 
+     ybottom = par("usr")[3], ytop = par("usr")[4], 
+     col = rgb(0.3, 0.3, 0.3, 0.3), border = NA)
+# Ajouter les points pour chaque colonne
+points(Trutta_predictions$year, Trutta_predictions$richesse_trutta, 
+       col = "grey50", pch = 18, type = "b", lwd = 1.5)  # Richesse trutta (colonne 3)
+points(Trutta_predictions$year, Trutta_predictions$richesse_trutta_sans_A, 
+       col = "dodgerblue", pch = 17, type = "b", lwd = 1.5)  # Richesse trutta sans A (colonne 6)
+points(Trutta_predictions$year, Trutta_predictions$richesse_trutta_sans_B, 
+       col = "chocolate1", pch = 16, type = "b", lwd = 1.5)  # Richesse trutta sans B (colonne 9)
+
+# Ajouter une légende
+legend("topright", 
+       legend = c("Aucun", "Barrage A", "Barrage B"),
+       col = c("grey50", "dodgerblue", "chocolate1"), 
+       pch = c(18, 17, 16), 
+       lty = 1, 
+       bty = "n",
+       cex=1.3)
+mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)  
+
+#### C. Gobio ####
+# Définir les limites de l'axe des Y pour Gobio
+y_lim_gobio <- c(
+  min(c(min(Gobio_predictions$richesse_gobio, na.rm = TRUE),
+        min(Gobio_predictions$richesse_gobio_sans_A, na.rm = TRUE),
+        min(Gobio_predictions$richesse_gobio_sans_B, na.rm = TRUE))),
+  max(c(max(Gobio_predictions$richesse_gobio, na.rm = TRUE),
+        max(Gobio_predictions$richesse_gobio_sans_A, na.rm = TRUE),
+        max(Gobio_predictions$richesse_gobio_sans_B, na.rm = TRUE)))
+)
+
+# Tracer un graphique vide pour Gobio
+plot(Gobio_predictions$year, Gobio_predictions$richesse_gobio, 
+     type = "n",  # Ne trace rien, juste le cadre
+     xlab = "Années", 
+     ylab = "Nbr. All./Locus", 
+     ylim = y_lim_gobio,
+     cex.lab = 1.3, 
+     bty = "l")
+
+rect(xleft = 0, xright = 2025, 
+     ybottom = par("usr")[3], ytop = par("usr")[4], 
+     col = rgb(0.3, 0.3, 0.3, 0.3), border = NA)
+
+# Ajouter les points pour chaque colonne
+points(Gobio_predictions$year, Gobio_predictions$richesse_gobio, 
+       col = "grey50", pch = 18, type = "b", lwd = 1.5)  # Richesse gobio
+points(Gobio_predictions$year, Gobio_predictions$richesse_gobio_sans_A, 
+       col = "dodgerblue", pch = 17, type = "b", lwd = 1.5)  # Richesse gobio sans A
+points(Gobio_predictions$year, Gobio_predictions$richesse_gobio_sans_B, 
+       col = "chocolate1", pch = 16, type = "b", lwd = 1.5)  # Richesse gobio sans B
+
+mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  
+
+#### Septimaniae ####
+# Définir les limites de l'axe des Y pour Septimaniae
+y_lim_septimaniae <- c(
+  min(c(min(Septimaniae_predictions$richesse_septimaniae, na.rm = TRUE),
+        min(Septimaniae_predictions$richesse_septimaniae_sans_A, na.rm = TRUE),
+        min(Septimaniae_predictions$richesse_septimaniae_sans_B, na.rm = TRUE))),
+  max(c(max(Septimaniae_predictions$richesse_septimaniae, na.rm = TRUE),
+        max(Septimaniae_predictions$richesse_septimaniae_sans_A, na.rm = TRUE),
+        max(Septimaniae_predictions$richesse_septimaniae_sans_B, na.rm = TRUE)))
+)
+
+# Tracer un graphique vide pour Septimaniae
+plot(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimaniae, 
+     type = "n",  # Ne trace rien, juste le cadre
+     xlab = "Années", 
+     ylab = "Nbr. All./Locus", 
+     ylim = y_lim_septimaniae,
+     cex.lab = 1.3, 
+     bty = "l")
+
+rect(xleft = 0, xright = 2025, 
+     ybottom = par("usr")[3], ytop = par("usr")[4], 
+     col = rgb(0.3, 0.3, 0.3, 0.3), border = NA)
+
+# Ajouter les points pour chaque colonne
+points(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimaniae, 
+       col = "grey50", pch = 18, type = "b", lwd = 1.5)  # Richesse septimaniae
+points(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimaniae_sans_A, 
+       col = "dodgerblue", pch = 17, type = "b", lwd = 1.5)  # Richesse septimaniae sans A
+points(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimaniae_sans_B, 
+       col = "chocolate1", pch = 16, type = "b", lwd = 1.5)  # Richesse septimaniae sans B
+mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2) 
 
 #### hugo
 #Stats####q
