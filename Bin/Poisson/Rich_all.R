@@ -59,38 +59,47 @@ par(family = "serif")
 
 # Graph Trutta
 plot(trutta_recent$n.adlt.rs ~ trutta_recent$year,
-     xlab = "Year",
-     ylab = "Number of Alleles per Locus",
-     main = "Trutta Allelic Richness Over Time",
+     xlab = "Années",
+     ylab = "Nbr. All./Locus",
+     cex.lab = 1.3,
      xaxt = "n",
      pch = 16,
      col = "darkgreen",
-     type="b")
-axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 40))
+     type="b",
+     bty="l",
+     xlim = c(min(trutta_recent$year), 2025))
+axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 35))
+abline(v = c(1861, 1953), col = "red1", lty = c(5,3),lwd=1.5)
 mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "a)" en haut à gauche
 
 # Graph  Septimaniae
 plot(septimaniae_recent$n.adlt.rs ~ septimaniae_recent$year,
-     xlab = "Year",
-     ylab = "Number of Alleles per Locus",
-     main = "Septimaniae Allelic Richness Over Time",
+     xlab = "Années",
+     ylab = "Nbr. All./Locus",
+     cex.lab = 1.3,
      xaxt = "n",
      pch = 17,
      col = "blue",
-     type="b")
-axis(1, at = seq(min(septimaniae_recent$year) - 1, max(septimaniae_recent$year), by = 40))
+     type="b",
+     bty="l",
+     xlim = c(min(septimaniae_recent$year), 2025))
+axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 35)) #Ici echelle de truite, pour avoir même axe en x partout
+abline(v = c(1861, 1953), col = "red1", lty = c(5,3),lwd=1.5)
 mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2)  
 
 # Graphique pour Gobio
 plot(gobio_recent$n.adlt.rs ~ gobio_recent$year,
-     xlab = "Year",
-     ylab = "Number of Alleles per Locus",
-     main = "Gobio Allelic Richness Over Time",
+     xlab = "Années",
+     ylab = "Nbr. All./Locus",
+     cex.lab = 1.3,
      xaxt = "n",
      pch = 18,
-     col = "red3",
-     type="b")
-axis(1, at = seq(min(gobio_recent$year) - 1, max(gobio_recent$year), by = 40))
+     col = "darkgoldenrod1",
+     type="b",
+     bty="l",
+     xlim = c(min(septimaniae_recent$year), 2025))
+axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 35))
+abline(v = c(1861, 1953), col = "red1", lty = c(5,3),lwd=1.5)
 mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "c)" en haut à gauche
 
 
