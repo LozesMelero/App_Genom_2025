@@ -1,0 +1,14 @@
+--- q u a n t i N E M O 2 ---
+    LOGFILE
+
+
+| basename                                | simfolder                               |      start time     |      stop time      | duration   | repl done | mean rpl   | mean gen | version                 | hostname             | output files 
+| trutta                                  | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Trutta/| 14-01-2025 09:51:29 | 14-01-2025 09:51:37 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta                                  | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Trutta/| 14-01-2025 09:51:37 | 14-01-2025 09:51:46 |   00:00:09 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta                                  | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Trutta/| 14-01-2025 09:51:46 | 14-01-2025 09:51:54 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio                                   | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Gobio/| 14-01-2025 09:52:57 | 14-01-2025 09:53:12 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio                                   | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Gobio/| 14-01-2025 09:53:12 | 14-01-2025 09:53:27 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio                                   | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Gobio/| 14-01-2025 09:53:27 | 14-01-2025 09:53:42 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Septimaniae/| 14-01-2025 09:53:52 | 14-01-2025 09:54:28 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Septimaniae/| 14-01-2025 09:54:28 | 14-01-2025 09:55:06 |   00:00:38 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/Septimaniae/| 14-01-2025 09:55:06 | 14-01-2025 09:55:42 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
