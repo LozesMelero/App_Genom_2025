@@ -66,7 +66,7 @@ plot(trutta_recent$n.adlt.rs ~ trutta_recent$year,
      pch = 16,
      col = "darkgreen",
      type="b")
-axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 35))
+axis(1, at = seq(min(trutta_recent$year) - 1, max(trutta_recent$year), by = 40))
 mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "a)" en haut à gauche
 
 # Graph  Septimaniae
@@ -78,7 +78,7 @@ plot(septimaniae_recent$n.adlt.rs ~ septimaniae_recent$year,
      pch = 17,
      col = "blue",
      type="b")
-axis(1, at = seq(min(septimaniae_recent$year) - 1, max(septimaniae_recent$year), by = 25))
+axis(1, at = seq(min(septimaniae_recent$year) - 1, max(septimaniae_recent$year), by = 40))
 mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2)  
 
 # Graphique pour Gobio
@@ -90,7 +90,7 @@ plot(gobio_recent$n.adlt.rs ~ gobio_recent$year,
      pch = 18,
      col = "red3",
      type="b")
-axis(1, at = seq(min(gobio_recent$year) - 1, max(gobio_recent$year), by = 25))
+axis(1, at = seq(min(gobio_recent$year) - 1, max(gobio_recent$year), by = 40))
 mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  # Ajoute "c)" en haut à gauche
 
 
