@@ -118,9 +118,14 @@ colnames(septimaniae_recent)[colnames(septimaniae_recent) %in% c("n.adlt.fst.wc_
 colnames(trutta_recent)[colnames(trutta_recent) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
   c("fst_trutta_1_2", "fst_trutta_1_3", "fst_trutta_2_3")
 
+#### Barrage A: Fst entre pop 1 et 2 ####
+max(c(max(gobio_recent$fst_gobio_1_2), ## Définir la y lim MAX de notre graph
+      max(septimaniae_recent$fst_septimaniae_1_2),
+      max(trutta_recent$fst_trutta_1_2)))
 
-
-
+min(c(min(gobio_recent$fst_gobio_1_2), ## Définir la y lim MIN de notre graph
+      min(septimaniae_recent$fst_septimaniae_1_2),
+      min(trutta_recent$fst_trutta_1_2)))
 
 
 
