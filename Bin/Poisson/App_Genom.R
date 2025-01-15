@@ -606,6 +606,26 @@ mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
 #_________________________________________________________________________________________________
 
 #### hugo
+
+######## F_index ########
+#### Chargement data ####
+
+trutta_sans <- read.table("../../F_index/Sans_barrage/Trutta_sans/trutta_sans_mean.txt", header = TRUE) 
+gobio_sans <- read.table("../../F_index/Sans_barrage/Gobio_sans/gobio_sans_mean.txt", header = TRUE) 
+septimaniae_sans <- read.table("../../F_index/Sans_barrage/Septimaniae_sans/septimaniae_sans_mean.txt", header = TRUE)
+
+
+trutta_just_A <- read.table("../../F_index/Just_A/Trutta_just_A/trutta_just_A_mean.txt", header = TRUE) 
+gobio_just_A <- read.table("../../F_index/Just_A/Gobio_just_A/gobio_just_A_mean.txt", header = TRUE) 
+septimaniae_just_A <- read.table("../../F_index/Just_A/Septimaniae_just_A/septimaniae_just_A_mean.txt", header = TRUE)
+
+trutta_just_B <- read.table("../../F_index/Just_B/Trutta_just_B/trutta_just_B_mean.txt", header = TRUE) 
+gobio_just_B <- read.table("../../F_index/Just_B/Gobio_just_B/gobio_just_B_mean.txt", header = TRUE) 
+septimaniae_just_B <- read.table("../../F_index/Just_B/Septimaniae_just_B/septimaniae_just_B_mean.txt", header = TRUE)
+
+
+
+
 #Stats####
 gobio_recent$esp<-"gobio"
 septimaniae_recent$esp<-"septimaniae"
