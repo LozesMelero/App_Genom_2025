@@ -1,9 +1,22 @@
 setwd(".")  # Repertoire du code
 
 ######## Chargement des fichiers ########
+#### Partie 1 ####
 trutta <- read.table("../../Trutta/trutta_mean.txt", header = TRUE) 
 gobio <- read.table("../../Gobio/gobio_mean.txt", header = TRUE)  
 septimaniae <- read.table("../../Septimaniae/septimaniae_mean.txt", header = TRUE)
+
+#### Partie 2 (prédictions) ####
+trutta_sans_A <- read.table("../../actions_plans/Remove_bar_A/Trutta_rem_A/trutta_rem_A_mean.txt", header = TRUE) 
+gobio_sans_A <- read.table("../../actions_plans/Remove_bar_A/Gobio_rem_A/gobio_rem_A_mean.txt", header = TRUE) 
+septimaniae_sans_A <- read.table("../../actions_plans/Remove_bar_A/Septimaniae_rem_A/septimaniae_rem_A_mean.txt", header = TRUE)
+
+trutta_sans_B <- read.table("../../actions_plans/Remove_bar_B/Trutta_rem_B/trutta_rem_B_mean.txt", header = TRUE) 
+gobio_sans_B <- read.table("../../actions_plans/Remove_bar_B/Gobio_rem_B/gobio_rem_B_mean.txt", header = TRUE) 
+septimaniae_sans_B <- read.table("../../actions_plans/Remove_bar_B/Septimaniae_rem_B/septimaniae_rem_B_mean.txt", header = TRUE)
+
+
+
 #_________________________________________________________________________________________________
 
 ######## Chargement des packages ########
