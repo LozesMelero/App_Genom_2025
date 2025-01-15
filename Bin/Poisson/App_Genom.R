@@ -707,7 +707,6 @@ colnames(septimaniae_just_B)[colnames(septimaniae_just_B) %in% c("n.adlt.fst.wc_
 colnames(trutta_just_B)[colnames(trutta_just_B) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
   c("fst_trutta_1_2_just_B", "fst_trutta_1_3_just_B", "fst_trutta_2_3_just_B")
 
-
 #_________________________________________________________________________________________________
 
 #Stats####
