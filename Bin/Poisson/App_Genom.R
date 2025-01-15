@@ -612,21 +612,77 @@ mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
 ######## F_index ########
 #### Chargement data ####
 
+# Sans mettre de barrages
 trutta_sans <- read.table("../../F_index/Sans_barrage/Trutta_sans/trutta_sans_mean.txt", header = TRUE) 
 gobio_sans <- read.table("../../F_index/Sans_barrage/Gobio_sans/gobio_sans_mean.txt", header = TRUE) 
 septimaniae_sans <- read.table("../../F_index/Sans_barrage/Septimaniae_sans/septimaniae_sans_mean.txt", header = TRUE)
 
-
+# Juste barrage A
 trutta_just_A <- read.table("../../F_index/Just_A/Trutta_just_A/trutta_just_A_mean.txt", header = TRUE) 
 gobio_just_A <- read.table("../../F_index/Just_A/Gobio_just_A/gobio_just_A_mean.txt", header = TRUE) 
 septimaniae_just_A <- read.table("../../F_index/Just_A/Septimaniae_just_A/septimaniae_just_A_mean.txt", header = TRUE)
 
+#Juste barrage B
 trutta_just_B <- read.table("../../F_index/Just_B/Trutta_just_B/trutta_just_B_mean.txt", header = TRUE) 
 gobio_just_B <- read.table("../../F_index/Just_B/Gobio_just_B/gobio_just_B_mean.txt", header = TRUE) 
 septimaniae_just_B <- read.table("../../F_index/Just_B/Septimaniae_just_B/septimaniae_just_B_mean.txt", header = TRUE)
 
+#### Modifications données (ajouts year) ####
+## Sans barrage ## 
+species_list <- list(
+  gobio_sans = list(data = gobio_sans, generation_time = 2),       # Cottus gobio_sans
+  trutta_sans = list(data = trutta_sans, generation_time = 4),     # Salmo trutta_sans
+  septimaniae_sans = list(data = septimaniae_sans, generation_time = 2)  # Phoxinus septimaniae_sans
+)
+start_year <- 1861  # Construction du premier barrage
+start_generation <- 4000  # Fin de la période d'homogénéisation des fréquences alléliques
+for (species in names(species_list)) {
+  data <- species_list[[species]]$data
+  generation_time <- species_list[[species]]$generation_time
+  data$year <- start_year + (data$generation - start_generation) * generation_time
+  species_list[[species]]$data <- data
+}
+gobio_sans <- species_list$gobio_sans$data
+trutta_sans <- species_list$trutta_sans$data
+septimaniae_sans <- species_list$septimaniae_sans$data
 
+## Juste A ##
+species_list <- list(
+  gobio_just_A = list(data = gobio_just_A, generation_time = 2),       # Cottus gobio_just_A
+  trutta_just_A = list(data = trutta_just_A, generation_time = 4),     # Salmo trutta_just_A
+  septimaniae_just_A = list(data = septimaniae_just_A, generation_time = 2)  # Phoxinus septimaniae_just_A
+)
+start_year <- 1861  # Construction du premier barrage
+start_generation <- 4000  # Fin de la période d'homogénéisation des fréquences alléliques
+for (species in names(species_list)) {
+  data <- species_list[[species]]$data
+  generation_time <- species_list[[species]]$generation_time
+  data$year <- start_year + (data$generation - start_generation) * generation_time
+  species_list[[species]]$data <- data
+}
+gobio_just_A <- species_list$gobio_just_A$data
+trutta_just_A <- species_list$trutta_just_A$data
+septimaniae_just_A <- species_list$septimaniae_just_A$data
 
+## Juste B ##
+
+species_list <- list(
+  gobio_just_B = list(data = gobio_just_B, generation_time = 2),       # Cottus gobio_just_B
+  trutta_just_B = list(data = trutta_just_B, generation_time = 4),     # Salmo trutta_just_B
+  septimaniae_just_B = list(data = septimaniae_just_B, generation_time = 2)  # Phoxinus septimaniae_just_B
+)
+start_year <- 1861  # Construction du premier barrage
+start_generation <- 4000  # Fin de la période d'homogénéisation des fréquences alléliques
+for (species in names(species_list)) {
+  data <- species_list[[species]]$data
+  generation_time <- species_list[[species]]$generation_time
+  data$year <- start_year + (data$generation - start_generation) * generation_time
+  species_list[[species]]$data <- data
+}
+gobio_just_B <- species_list$gobio_just_B$data
+trutta_just_B <- species_list$trutta_just_B$data
+septimaniae_just_B <- species_list$septimaniae_just_B$data
+#_________________________________________________________________________________________________
 
 #Stats####
 gobio_recent$esp<-"gobio"
