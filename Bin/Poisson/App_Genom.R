@@ -493,7 +493,7 @@ y_lim_fst_ratio <- c(
 #### Graphique Fst barrage A ####
 par(mgp = c(2.5, 1, 0)) 
 plot(1, type = "n", 
-     xlab = "Annees", 
+     xlab = "Années", 
      ylab = expression(italic(F[ST]/(1 - F[ST]))), 
      xlim = c(min(Trutta_predictions$year), max(Trutta_predictions$year)), 
      ylim = y_lim_fst_ratio, 
@@ -573,7 +573,7 @@ y_lim_fst_ratio <- c(
 #### Graphique Fst barrage B ####
 par(mgp = c(2.5, 1, 0)) 
 plot(1, type = "n", 
-     xlab = "Annees", 
+     xlab = "Années", 
      ylab= "  ",
      xlim = c(min(Trutta_predictions$year), max(Trutta_predictions$year)), 
      ylim = y_lim_fst_ratio, 
