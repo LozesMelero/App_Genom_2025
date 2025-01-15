@@ -682,6 +682,32 @@ for (species in names(species_list)) {
 gobio_just_B <- species_list$gobio_just_B$data
 trutta_just_B <- species_list$trutta_just_B$data
 septimaniae_just_B <- species_list$septimaniae_just_B$data
+#### Rename col ####
+## data sans ##
+colnames(gobio_sans)[colnames(gobio_sans) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_gobio_1_2_sans", "fst_gobio_1_3_sans", "fst_gobio_2_3_sans")
+colnames(septimaniae_sans)[colnames(septimaniae_sans) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_septimaniae_1_2_sans", "fst_septimaniae_1_3_sans", "fst_septimaniae_2_3_sans")
+colnames(trutta_sans)[colnames(trutta_sans) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_trutta_1_2_sans", "fst_trutta_1_3_sans", "fst_trutta_2_3_sans")
+
+## Juste A ##
+colnames(gobio_just_A)[colnames(gobio_just_A) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_gobio_1_2_just_A", "fst_gobio_1_3_just_A", "fst_gobio_2_3_just_A")
+colnames(septimaniae_just_A)[colnames(septimaniae_just_A) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_septimaniae_1_2_just_A", "fst_septimaniae_1_3_just_A", "fst_septimaniae_2_3_just_A")
+colnames(trutta_just_A)[colnames(trutta_just_A) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_trutta_1_2_just_A", "fst_trutta_1_3_just_A", "fst_trutta_2_3_just_A")
+
+## Juste B ##
+colnames(gobio_just_B)[colnames(gobio_just_B) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_gobio_1_2_just_B", "fst_gobio_1_3_just_B", "fst_gobio_2_3_just_B")
+colnames(septimaniae_just_B)[colnames(septimaniae_just_B) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_septimaniae_1_2_just_B", "fst_septimaniae_1_3_just_B", "fst_septimaniae_2_3_just_B")
+colnames(trutta_just_B)[colnames(trutta_just_B) %in% c("n.adlt.fst.wc_p1.2", "n.adlt.fst.wc_p1.3", "n.adlt.fst.wc_p2.3")] <- 
+  c("fst_trutta_1_2_just_B", "fst_trutta_1_3_just_B", "fst_trutta_2_3_just_B")
+
+
 #_________________________________________________________________________________________________
 
 #Stats####
