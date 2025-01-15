@@ -454,18 +454,35 @@ points(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimania
 mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2) 
 
 #### hugo
-#Stats####q
-hist(gobio_recent$year)
-mod1=lm(year~Period*Cell*Scen,data=gobio_recent)
-anova(mod1)  #significatif sauf triple intéraction
-hist(residuals(mod1))
-summary(mod1) #effet intéraction dépendants agissent sur température donc toutes pentes différentes
-summary(mod1)$r.squared
-# 40%
-#faire interprétation des pentes et des valeurs aux différents temps et les temps ou les courbes se croisent.
-#température maximale augmente avec le temps, effet moins important pour micro (effet tampon accentue), pente plus important avec le scénario 585
-#intéractions deux à deux significatives pas à 3
-lillie.test(mod1$residuals)
-bptest(mod1)
+#Stats####
+gobio_recent$esp<-"gobio"
+septimaniae_recent$esp<-"septimaniae"
+trutta_recent$esp<-"trutta"
+names(gobio_recent)<-c("generation", "alive","Na","Fst_12","Fst_13","Fst_23","year","Fst_ratio","esp")
+names(septimaniae_recent)<-names(gobio_recent)
+names(trutta_recent)<-names(gobio_recent)
+
+recent<-rbind(gobio_recent, septimaniae_recent)
+recent<-rbind(recent, trutta_recent)
+
+##tout les trucs en hastags c'est pour les conditions d'applications mais frère la je m'en blc un peu
+#hist(recent$Na)
+mod1=lm(Na~year*esp,data=recent)
+anova(mod1)  
+#hist(residuals(mod1))
+summary(mod1) 
+#summary(mod1)$r.squared #pour savoir varaition expliquée
+#lillie.test(mod1$residuals)
+#bptest(mod1)
+
+mod2=lm(Fst_12~year*esp,data=recent)
+anova(mod2)  
+summary(mod2) 
+
+mod3=lm(Fst_23~year*esp,data=recent)
+anova(mod3)  
+summary(mod3) 
+
+###faut faire le futur
 
 #F-index####
