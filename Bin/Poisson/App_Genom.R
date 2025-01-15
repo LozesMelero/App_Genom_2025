@@ -453,6 +453,158 @@ points(Septimaniae_predictions$year, Septimaniae_predictions$richesse_septimania
        col = "chocolate1", pch = 16, type = "b", lwd = 1.5)  # Richesse septimaniae sans B
 mtext("b)", side = 3, line = 1, adj = 0, font = 2,cex=2) 
 
+######## Prédictions Fst selon sp et traitements ########
+#### Préparation data Fst barrage A ####
+# Calculer Fst/(1-Fst) pour Trutta
+Trutta_predictions$fst_ratio_trutta <- Trutta_predictions$fst_1_2_trutta / (1 - Trutta_predictions$fst_1_2_trutta)
+Trutta_predictions$fst_ratio_trutta_sans_A <- Trutta_predictions$fst_1_2_trutta_sans_A / (1 - Trutta_predictions$fst_1_2_trutta_sans_A)
+
+# Calculer Fst/(1-Fst) pour Gobio
+Gobio_predictions$fst_ratio_gobio <- Gobio_predictions$fst_1_2_gobio / (1 - Gobio_predictions$fst_1_2_gobio)
+Gobio_predictions$fst_ratio_gobio_sans_A <- Gobio_predictions$fst_1_2_gobio_sans_A / (1 - Gobio_predictions$fst_1_2_gobio_sans_A)
+
+# Calculer Fst/(1-Fst) pour Septimaniae
+Septimaniae_predictions$fst_ratio_septimaniae <- Septimaniae_predictions$fst_1_2_septimaniae / (1 - Septimaniae_predictions$fst_1_2_septimaniae)
+Septimaniae_predictions$fst_ratio_septimaniae_sans_A <- Septimaniae_predictions$fst_1_2_septimaniae_sans_A / (1 - Septimaniae_predictions$fst_1_2_septimaniae_sans_A)
+
+
+# Définir les limites des axes
+y_lim_fst_ratio <- c(
+  min(c(min(Trutta_predictions$fst_ratio_trutta, na.rm = TRUE),
+        min(Trutta_predictions$fst_ratio_trutta_sans_A, na.rm = TRUE),
+        min(Gobio_predictions$fst_ratio_gobio, na.rm = TRUE),
+        min(Gobio_predictions$fst_ratio_gobio_sans_A, na.rm = TRUE),
+        min(Septimaniae_predictions$fst_ratio_septimaniae, na.rm = TRUE),
+        min(Septimaniae_predictions$fst_ratio_septimaniae_sans_A, na.rm = TRUE))),
+  max(c(max(Trutta_predictions$fst_ratio_trutta, na.rm = TRUE),
+        max(Trutta_predictions$fst_ratio_trutta_sans_A, na.rm = TRUE),
+        max(Gobio_predictions$fst_ratio_gobio, na.rm = TRUE),
+        max(Gobio_predictions$fst_ratio_gobio_sans_A, na.rm = TRUE),
+        max(Septimaniae_predictions$fst_ratio_septimaniae, na.rm = TRUE),
+        max(Septimaniae_predictions$fst_ratio_septimaniae_sans_A, na.rm = TRUE)))
+)
+
+#### Graphique Fst barrage A ####
+par(mgp = c(2.5, 1, 0)) 
+plot(1, type = "n", 
+     xlab = "Annees", 
+     ylab = expression(italic(F[ST]/(1 - F[ST]))), 
+     xlim = c(min(Trutta_predictions$year), max(Trutta_predictions$year)), 
+     ylim = y_lim_fst_ratio, 
+     cex.lab = 1.3, 
+     bty = "l")
+
+# Définir les couleurs avec transparence pour les tirets
+transparent_darkgreen <- adjustcolor("darkgreen", alpha.f = 0.7)       # Trutta
+transparent_darkgoldenrod <- adjustcolor("darkgoldenrod1", alpha.f = 0.7) # Gobio
+transparent_blue <- adjustcolor("blue", alpha.f = 0.7)                 # Septimaniae
+
+# Ajouter les courbes pour Trutta
+lines(Trutta_predictions$year, Trutta_predictions$fst_ratio_trutta, 
+      col = transparent_darkgreen, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Trutta_predictions$year, Trutta_predictions$fst_ratio_trutta_sans_A, 
+      col = "darkgreen", lty = 1, lwd = 1.75)  # Sans barrage A (ligne continue)
+
+# Ajouter les courbes pour Gobio
+lines(Gobio_predictions$year, Gobio_predictions$fst_ratio_gobio, 
+      col = transparent_darkgoldenrod, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Gobio_predictions$year, Gobio_predictions$fst_ratio_gobio_sans_A, 
+      col = "darkgoldenrod1", lty = 1, lwd = 1.75)  # Sans barrage A (ligne continue)
+
+# Ajouter les courbes pour Septimaniae
+lines(Septimaniae_predictions$year, Septimaniae_predictions$fst_ratio_septimaniae, 
+      col = transparent_blue, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Septimaniae_predictions$year, Septimaniae_predictions$fst_ratio_septimaniae_sans_A, 
+      col = "blue", lty = 1, lwd = 1.75)  # Sans barrage A (ligne continue)
+
+# Ajouter une zone grisée avant 2025
+rect(xleft = 0, xright = 2025, 
+     ybottom = par("usr")[3], ytop = par("usr")[4], 
+     col = rgb(0.3, 0.3, 0.3, 0.3), border = NA)
+
+# Ajouter une légende
+legend("topleft", 
+       legend = c(expression(italic("C. gobio")), 
+                  expression(italic("P. septimaniae")), 
+                  expression(italic("S. trutta"))),
+       col = c("darkgoldenrod1", "blue", "darkgreen"),  # Couleurs des espèces
+       pch = 15,  # Rectangle coloré pour chaque espèce
+       bty = "n",  # Pas de bordure autour de la légende
+       pt.cex = 1.5,  # Taille des rectangles de couleur
+       cex = 1.3)  # Taille du texte
+mtext("a)", side = 3, line = 1, adj = 0, font = 2,cex=2)
+
+
+#### Préparation data Fst barrage B ####
+
+# Calculer Fst/(1-Fst) pour Trutta
+Trutta_predictions$fst_ratio_trutta <- Trutta_predictions$fst_2_3_trutta / (1 - Trutta_predictions$fst_2_3_trutta)
+Trutta_predictions$fst_ratio_trutta_sans_B <- Trutta_predictions$fst_2_3_trutta_sans_B / (1 - Trutta_predictions$fst_2_3_trutta_sans_B)
+
+# Calculer Fst/(1-Fst) pour Gobio
+Gobio_predictions$fst_ratio_gobio <- Gobio_predictions$fst_2_3_gobio / (1 - Gobio_predictions$fst_2_3_gobio)
+Gobio_predictions$fst_ratio_gobio_sans_B <- Gobio_predictions$fst_2_3_gobio_sans_B / (1 - Gobio_predictions$fst_2_3_gobio_sans_B)
+
+# Calculer Fst/(1-Fst) pour Septimaniae
+Septimaniae_predictions$fst_ratio_septimaniae <- Septimaniae_predictions$fst_2_3_septimaniae / (1 - Septimaniae_predictions$fst_2_3_septimaniae)
+Septimaniae_predictions$fst_ratio_septimaniae_sans_B <- Septimaniae_predictions$fst_2_3_septimaniae_sans_B / (1 - Septimaniae_predictions$fst_2_3_septimaniae_sans_B)
+
+
+# Définir les limites des axes
+y_lim_fst_ratio <- c(
+  min(c(min(Trutta_predictions$fst_ratio_trutta, na.rm = TRUE),
+        min(Trutta_predictions$fst_ratio_trutta_sans_B, na.rm = TRUE),
+        min(Gobio_predictions$fst_ratio_gobio, na.rm = TRUE),
+        min(Gobio_predictions$fst_ratio_gobio_sans_B, na.rm = TRUE),
+        min(Septimaniae_predictions$fst_ratio_septimaniae, na.rm = TRUE),
+        min(Septimaniae_predictions$fst_ratio_septimaniae_sans_B, na.rm = TRUE))),
+  max(c(max(Trutta_predictions$fst_ratio_trutta, na.rm = TRUE),
+        max(Trutta_predictions$fst_ratio_trutta_sans_B, na.rm = TRUE),
+        max(Gobio_predictions$fst_ratio_gobio, na.rm = TRUE),
+        max(Gobio_predictions$fst_ratio_gobio_sans_B, na.rm = TRUE),
+        max(Septimaniae_predictions$fst_ratio_septimaniae, na.rm = TRUE),
+        max(Septimaniae_predictions$fst_ratio_septimaniae_sans_B, na.rm = TRUE)))
+)
+
+#### Graphique Fst barrage B ####
+par(mgp = c(2.5, 1, 0)) 
+plot(1, type = "n", 
+     xlab = "Annees", 
+     ylab= "  ",
+     xlim = c(min(Trutta_predictions$year), max(Trutta_predictions$year)), 
+     ylim = y_lim_fst_ratio, 
+     cex.lab = 1.3, 
+     bty = "l")
+
+# Définir les couleurs avec transparence pour les tirets
+transparent_darkgreen <- adjustcolor("darkgreen", alpha.f = 0.7)       # Trutta
+transparent_darkgoldenrod <- adjustcolor("darkgoldenrod1", alpha.f = 0.7) # Gobio
+transparent_blue <- adjustcolor("blue", alpha.f = 0.7)                 # Septimaniae
+
+# Ajouter les courbes pour Trutta
+lines(Trutta_predictions$year, Trutta_predictions$fst_ratio_trutta, 
+      col = transparent_darkgreen, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Trutta_predictions$year, Trutta_predictions$fst_ratio_trutta_sans_B, 
+      col = "darkgreen", lty = 1, lwd = 1.75)  # Sans barrage B (ligne continue)
+
+# Ajouter les courbes pour Gobio
+lines(Gobio_predictions$year, Gobio_predictions$fst_ratio_gobio, 
+      col = transparent_darkgoldenrod, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Gobio_predictions$year, Gobio_predictions$fst_ratio_gobio_sans_B, 
+      col = "darkgoldenrod1", lty = 1, lwd = 1.75)  # Sans barrage B (ligne continue)
+
+# Ajouter les courbes pour Septimaniae
+lines(Septimaniae_predictions$year, Septimaniae_predictions$fst_ratio_septimaniae, 
+      col = transparent_blue, lty = 2, lwd = 1.75)  # Barrage intact (tirets, transparent)
+lines(Septimaniae_predictions$year, Septimaniae_predictions$fst_ratio_septimaniae_sans_B, 
+      col = "blue", lty = 1, lwd = 1.75)  # Sans barrage B (ligne continue)
+
+# Ajouter une zone grisée avant 2025
+rect(xleft = 0, xright = 2025, 
+     ybottom = par("usr")[3], ytop = par("usr")[4], 
+     col = rgb(0.3, 0.3, 0.3, 0.3), border = NA)
+mtext("b)", side = 3, line = 1, adj = 0, font = 2, cex = 2)
+
 #### hugo
 #Stats####
 gobio_recent$esp<-"gobio"
