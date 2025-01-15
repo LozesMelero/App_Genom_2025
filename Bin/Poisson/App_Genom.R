@@ -736,8 +736,106 @@ summary(mod2)
 
 mod3=lm(Fst_23~year*esp,data=recent)
 anova(mod3)  
-summary(mod3) 
+summary(mod3)
 
-###faut faire le futur
+library(dplyr)
+library(tidyr)
+
+t.test(recent$Fst_12,recent$Fst_23)
+
+recent2 <- recent %>%
+  pivot_longer(cols = c(Fst_12, Fst_23),    # Colonnes à fondre
+               names_to = "fst_type",       # Nouvelle colonne qui contient 'Fst_12' ou 'Fst_23'
+               values_to = "Fst_value") 
+
+mod3=lm(Fst_value~fst_type*year*esp,data=recent2)
+anova(mod3)  
+summary(mod3)
+
+###le futur ####
+gobio_futur=gobio[800:868,]
+gobio_futur$bar="all"
+gobio_sans_A_futur$bar="noA"
+gobio_sans_B_futur$bar="noB"
+names(gobio_futur)<-c("generation", "alive","Na","Fst_12","Fst_13","Fst_23","year","bar")
+names(gobio_sans_A_futur)<-names(gobio_futur)
+names(gobio_sans_B_futur)<-names(gobio_futur)
+gobio_pred<-rbind(gobio_futur, gobio_sans_A_futur)
+gobio_pred<-rbind(gobio_pred, gobio_sans_B_futur)
+
+modgobio=lm(Na~year*bar,data=gobio_pred)
+anova(modgobio)  
+summary(modgobio)
+
+septimaniae_futur=septimaniae[800:868,]
+septimaniae_futur$bar="all"
+septimaniae_sans_A_futur$bar="noA"
+septimaniae_sans_B_futur$bar="noB"
+names(septimaniae_futur)<-c("generation", "alive","Na","Fst_12","Fst_13","Fst_23","year","bar")
+names(septimaniae_sans_A_futur)<-names(septimaniae_futur)
+names(septimaniae_sans_B_futur)<-names(septimaniae_futur)
+septimaniae_pred<-rbind(septimaniae_futur, septimaniae_sans_A_futur)
+septimaniae_pred<-rbind(septimaniae_pred, septimaniae_sans_B_futur)
+
+modseptimaniae=lm(Na~year*bar,data=septimaniae_pred)
+anova(modseptimaniae)  
+summary(modseptimaniae)
+
+trutta_futur=trutta[800:868,]
+trutta_futur$bar="all"
+trutta_sans_A_futur$bar="noA"
+trutta_sans_B_futur$bar="noB"
+names(trutta_futur)<-c("generation", "alive","Na","Fst_12","Fst_13","Fst_23","year","bar")
+names(trutta_sans_A_futur)<-names(trutta_futur)
+names(trutta_sans_B_futur)<-names(trutta_futur)
+trutta_pred<-rbind(trutta_futur, trutta_sans_A_futur)
+trutta_pred<-rbind(trutta_pred, trutta_sans_B_futur)
+
+modtrutta=lm(Na~year*bar,data=trutta_pred)
+anova(modtrutta)  
+summary(modtrutta)
+
+#pour les Fst
+gobio_pred$esp="gobio"
+trutta_pred$esp="trutta"
+septimaniae_pred$esp="septimaniae"
+tout_pred<-rbind(gobio_pred, trutta_pred)
+tout_pred<-rbind(tout_pred, septimaniae_pred)
+tout_pred_A <- subset(tout_pred, bar %in% c("all", "noA"))
+tout_pred_B <- subset(tout_pred, bar %in% c("all", "noB"))
+
+modA=lm(Fst_12~year*bar*esp,data=tout_pred_A)
+anova(modA)  
+summary(modA)
+
+modB=lm(Fst_23~year*bar*esp,data=tout_pred_B)
+anova(modB)  
+summary(modB)
 
 #F-index####
+#Barrage gobio
+gobio_min_A <- gobio_just_B[1000, "n.adlt.fst.wc_p2.3"]
+gobio_obs_A <- gobio[1000, "fst_2_3_gobio"]
+gobio_obs_A-gobio_min_A
+
+gobio_min_B <- gobio_just_A[1000, "n.adlt.fst.wc_p1.2"]
+gobio_obs_B <- gobio[1000, "fst_1_2_gobio"]
+gobio_obs_B-gobio_min_B
+
+#Barrage septimaniae
+septimaniae_min_A <- septimaniae_just_B[1000, "n.adlt.fst.wc_p2.3"]
+septimaniae_obs_A <- septimaniae[1000, "fst_2_3_septimaniae"]
+septimaniae_obs_A-septimaniae_min_A
+
+septimaniae_min_B <- septimaniae_just_A[1000, "n.adlt.fst.wc_p1.2"]
+septimaniae_obs_B <- septimaniae[1000, "fst_1_2_septimaniae"]
+septimaniae_obs_B-septimaniae_min_B
+
+#Barrage trutta
+trutta_min_A <- trutta_just_B[1000, "n.adlt.fst.wc_p2.3"]
+trutta_obs_A <- trutta[1000, "fst_2_3_trutta"]
+trutta_obs_A-trutta_min_A
+
+trutta_min_B <- trutta_just_A[1000, "n.adlt.fst.wc_p1.2"]
+trutta_obs_B <- trutta[1000, "fst_1_2_trutta"]
+trutta_obs_B-trutta_min_B
