@@ -423,6 +423,8 @@ points(Gobio_predictions$year, Gobio_predictions$richesse_gobio_sans_B,
        col = "chocolate1", pch = 16, type = "b", lwd = 1.5)  # Richesse gobio sans B
 
 mtext("c)", side = 3, line = 1, adj = 0, font = 2,cex=2)  
+
+
 #_________________________________________________________________________________________________
 
 #### Septimaniae ####
