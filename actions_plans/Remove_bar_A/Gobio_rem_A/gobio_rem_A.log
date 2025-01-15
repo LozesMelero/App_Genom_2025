@@ -1,0 +1,53 @@
+#############################################
+#                quantiNemo 2               #
+#   version 2.0.1 [Nov 26 2018; 10:15:54]   #
+#       Commit N° : ce61fbd           #
+#                                           #
+#              Simulation log               #
+# simulation started on 14-01-2025 22:17:12 #
+#              (log as input)               #
+#############################################
+
+
+## simulation
+_settings_file gobio_rem_A.ini
+all_combinations 0
+filename gobio_rem_A
+folder Gobio_rem_A
+replicates 10
+seed {1736889432 29746242}
+
+## metapop
+coalescence 0
+generations 5000
+patch_capacity 200
+patch_number 3
+patch_sample_size 30
+
+## ntrl
+ntrl_all 20
+ntrl_loci 20
+ntrl_mutation_model 1
+ntrl_mutation_rate 0.0005
+
+## breed
+mating_nb_offspring_model 6
+mating_system 3
+mean_fecundity 10
+
+## save_stats
+stat {n.adlt.rs n.adlt.fst.wc_pair}
+stat_log_time 5
+
+## dispersal
+dispersal_rate (1{{0 0.02 0}{0.02 0 0.02}{0 0.02 0}} , 4000{{0 0 0}{0 0 0.02}{0 0.02 0}} , 4046{{0 0 0}{0 0 0}{0 0 0}} , 4082{{0 0.02 0}{0.02 0 0}{0 0 0}})
+
+## regulation_adults
+regulation_model_adults 1
+
+
+#############################################
+#  simulation ended on 14-01-2025 22:17:26  #
+#                                           #
+#  duration of the simulation was 00:00:14  #
+#############################################

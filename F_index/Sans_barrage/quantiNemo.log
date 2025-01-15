@@ -1,0 +1,14 @@
+--- q u a n t i N E M O 2 ---
+    LOGFILE
+
+
+| basename                                | simfolder                               |      start time     |      stop time      | duration   | repl done | mean rpl   | mean gen | version                 | hostname             | output files 
+| gobio_sans                              | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Gobio_sans/| 15-01-2025 09:48:35 | 15-01-2025 09:48:50 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio_sans                              | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Gobio_sans/| 15-01-2025 09:48:50 | 15-01-2025 09:49:05 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio_sans                              | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Gobio_sans/| 15-01-2025 09:49:05 | 15-01-2025 09:49:20 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae_sans                        | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Septimaniae_sans/| 15-01-2025 09:49:35 | 15-01-2025 09:50:11 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae_sans                        | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Septimaniae_sans/| 15-01-2025 09:50:11 | 15-01-2025 09:50:47 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae_sans                        | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Septimaniae_sans/| 15-01-2025 09:50:47 | 15-01-2025 09:51:23 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_sans                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Trutta_sans/| 15-01-2025 09:51:38 | 15-01-2025 09:51:46 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_sans                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Trutta_sans/| 15-01-2025 09:51:46 | 15-01-2025 09:51:53 |   00:00:07 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_sans                             | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Sans_barrage/Trutta_sans/| 15-01-2025 09:51:53 | 15-01-2025 09:52:01 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":

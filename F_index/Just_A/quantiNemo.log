@@ -1,0 +1,14 @@
+--- q u a n t i N E M O 2 ---
+    LOGFILE
+
+
+| basename                                | simfolder                               |      start time     |      stop time      | duration   | repl done | mean rpl   | mean gen | version                 | hostname             | output files 
+| septimaniae_just_A                      | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Septimaniae_just_A/| 15-01-2025 09:53:39 | 15-01-2025 09:54:15 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae_just_A                      | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Septimaniae_just_A/| 15-01-2025 09:54:15 | 15-01-2025 09:54:51 |   00:00:36 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| septimaniae_just_A                      | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Septimaniae_just_A/| 15-01-2025 09:54:51 | 15-01-2025 09:55:26 |   00:00:35 |        10 |   00:00:03 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio_just_A                            | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Gobio_just_A/| 15-01-2025 09:57:10 | 15-01-2025 09:57:25 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio_just_A                            | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Gobio_just_A/| 15-01-2025 09:57:25 | 15-01-2025 09:57:40 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| gobio_just_A                            | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Gobio_just_A/| 15-01-2025 09:57:40 | 15-01-2025 09:57:55 |   00:00:15 |        10 |   00:00:01 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_just_A                           | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Trutta_just_A/| 15-01-2025 09:58:16 | 15-01-2025 09:58:24 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_just_A                           | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Trutta_just_A/| 15-01-2025 09:58:24 | 15-01-2025 09:58:32 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
+| trutta_just_A                           | /Users/fredericlozes-melero/Desktop/quantinemo_projet/F_index/Just_A/Trutta_just_A/| 15-01-2025 09:58:32 | 15-01-2025 09:58:40 |   00:00:08 |        10 |   00:00:00 |     5000 | [Nov 26 2018; 10:15:54] | -                    | ".txt":
