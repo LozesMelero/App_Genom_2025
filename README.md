@@ -19,5 +19,5 @@
 ### 3. Script R 
 - `App_Genom.R` script R utilisé pour les analyses statistiques et la création de graphiques se situe dans la dossier `Bin/Poisson`. Ce script à été consrtruit de sorte à pouvoir être utiliser en téléchargeant le présent répertoir GitHub.
 
- ![](./Logo_UT3.jpg =x250)  ![](./truite_image.jpg) 
+ ![](./Logo_UT3.jpg =100x20)  ![](./truite_image.jpg) 
            
