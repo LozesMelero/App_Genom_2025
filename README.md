@@ -8,7 +8,7 @@
 
 
 ### **1. Fichiers **
-- `fichiers.ini` : Fichiers utilisé pour paramétrer les simulations dans **quantinemo**. 
+- `fichiers.ini` : Fichiers utilisé pour paramétrer les simulations dans **quantiNemo** _(Neuenschwander, Michaud, & Goudet, 2019)_. 
 - Les fichiers `_mean.txt`, `_var.txt`, `_legend.txt` et `_stats.txt` sont les fichiers de sorties, après avoir lancé les simulations.
 - Les fichiers `.log` contiennent des informations sur les paramètres post simulations.
 
