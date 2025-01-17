@@ -1,5 +1,5 @@
 # App_Genom_2025
-> *Résumé rapide : une ou deux phrases décrivant le but du projet.*
+> *Répertoire qui contient les données sur les fichiers d'entrées pour quentiNemo, les sorties brutes ainsi que le code R pour les statistiues et graphiques associés*
 
 ---
 
