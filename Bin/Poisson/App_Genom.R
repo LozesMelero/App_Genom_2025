@@ -722,7 +722,7 @@ recent<-rbind(recent, trutta_recent)
 
 ##tout les trucs en hastags c'est pour les conditions d'applications mais frère la je m'en blc un peu
 #hist(recent$Na)
-mod1=lm(Na~year*esp,data=recent)
+mod1=glm(Na~year*esp,data=recent)
 anova(mod1)  
 #hist(residuals(mod1))
 summary(mod1) 
@@ -730,25 +730,25 @@ summary(mod1)
 #lillie.test(mod1$residuals)
 #bptest(mod1)
 
-mod2=lm(Fst_12~year*esp,data=recent)
+mod2=glm(Fst_12~year*esp,data=recent)
 anova(mod2)  
 summary(mod2) 
 
-mod3=lm(Fst_23~year*esp,data=recent)
+mod3=glm(Fst_23~year*esp,data=recent)
 anova(mod3)  
 summary(mod3)
 
 library(dplyr)
 library(tidyr)
 
-t.test(recent$Fst_12,recent$Fst_23)
+t.test(recent$Fst_12,recent$Fst_23,paired = TRUE)
 
 recent2 <- recent %>%
   pivot_longer(cols = c(Fst_12, Fst_23),    # Colonnes à fondre
                names_to = "fst_type",       # Nouvelle colonne qui contient 'Fst_12' ou 'Fst_23'
                values_to = "Fst_value") 
 
-mod3=lm(Fst_value~fst_type*year*esp,data=recent2)
+mod3=glm(Fst_value~fst_type*year*esp,data=recent2)
 anova(mod3)  
 summary(mod3)
 
@@ -763,7 +763,7 @@ names(gobio_sans_B_futur)<-names(gobio_futur)
 gobio_pred<-rbind(gobio_futur, gobio_sans_A_futur)
 gobio_pred<-rbind(gobio_pred, gobio_sans_B_futur)
 
-modgobio=lm(Na~year*bar,data=gobio_pred)
+modgobio=glm(Na~year*bar,data=gobio_pred)
 anova(modgobio)  
 summary(modgobio)
 
@@ -777,7 +777,7 @@ names(septimaniae_sans_B_futur)<-names(septimaniae_futur)
 septimaniae_pred<-rbind(septimaniae_futur, septimaniae_sans_A_futur)
 septimaniae_pred<-rbind(septimaniae_pred, septimaniae_sans_B_futur)
 
-modseptimaniae=lm(Na~year*bar,data=septimaniae_pred)
+modseptimaniae=glm(Na~year*bar,data=septimaniae_pred)
 anova(modseptimaniae)  
 summary(modseptimaniae)
 
@@ -791,7 +791,7 @@ names(trutta_sans_B_futur)<-names(trutta_futur)
 trutta_pred<-rbind(trutta_futur, trutta_sans_A_futur)
 trutta_pred<-rbind(trutta_pred, trutta_sans_B_futur)
 
-modtrutta=lm(Na~year*bar,data=trutta_pred)
+modtrutta=glm(Na~year*bar,data=trutta_pred)
 anova(modtrutta)  
 summary(modtrutta)
 
@@ -804,38 +804,39 @@ tout_pred<-rbind(tout_pred, septimaniae_pred)
 tout_pred_A <- subset(tout_pred, bar %in% c("all", "noA"))
 tout_pred_B <- subset(tout_pred, bar %in% c("all", "noB"))
 
-modA=lm(Fst_12~year*bar*esp,data=tout_pred_A)
+modA=glm(Fst_12~year*bar*esp,data=tout_pred_A)
 anova(modA)  
 summary(modA)
 
-modB=lm(Fst_23~year*bar*esp,data=tout_pred_B)
+modB=glm(Fst_23~year*bar*esp,data=tout_pred_B)
 anova(modB)  
 summary(modB)
 
 #F-index####
 #Barrage gobio
-gobio_min_A <- gobio_just_B[1000, "n.adlt.fst.wc_p2.3"]
-gobio_obs_A <- gobio[1000, "fst_2_3_gobio"]
+gobio_min_A <- gobio_just_B[816, "fst_gobio_1_2_just_B"]
+gobio_obs_A <- gobio[816, "fst_1_2_gobio"]
 gobio_obs_A-gobio_min_A
 
-gobio_min_B <- gobio_just_A[1000, "n.adlt.fst.wc_p1.2"]
-gobio_obs_B <- gobio[1000, "fst_1_2_gobio"]
+gobio_min_B <- gobio_just_A[816, "fst_gobio_2_3_just_A"]
+gobio_obs_B <- gobio[816, "fst_2_3_gobio"]
 gobio_obs_B-gobio_min_B
 
 #Barrage septimaniae
-septimaniae_min_A <- septimaniae_just_B[1000, "n.adlt.fst.wc_p2.3"]
-septimaniae_obs_A <- septimaniae[1000, "fst_2_3_septimaniae"]
+septimaniae_min_A <- septimaniae_just_B[816, "fst_septimaniae_1_2_just_B"]
+septimaniae_obs_A <- septimaniae[816, "fst_1_2_septimaniae"]
 septimaniae_obs_A-septimaniae_min_A
 
-septimaniae_min_B <- septimaniae_just_A[1000, "n.adlt.fst.wc_p1.2"]
-septimaniae_obs_B <- septimaniae[1000, "fst_1_2_septimaniae"]
+septimaniae_min_B <- septimaniae_just_A[816, "fst_septimaniae_2_3_just_A"]
+septimaniae_obs_B <- septimaniae[816, "fst_2_3_septimaniae"]
 septimaniae_obs_B-septimaniae_min_B
 
 #Barrage trutta
-trutta_min_A <- trutta_just_B[1000, "n.adlt.fst.wc_p2.3"]
-trutta_obs_A <- trutta[1000, "fst_2_3_trutta"]
+trutta_min_A <- trutta_just_B[816, "fst_trutta_1_2_just_B"]
+trutta_obs_A <- trutta[816, "fst_1_2_trutta"]
 trutta_obs_A-trutta_min_A
 
-trutta_min_B <- trutta_just_A[1000, "n.adlt.fst.wc_p1.2"]
-trutta_obs_B <- trutta[1000, "fst_1_2_trutta"]
+trutta_min_B <- trutta_just_A[816, "fst_trutta_2_3_just_A"]
+trutta_obs_B <- trutta[816, "fst_2_3_trutta"]
 trutta_obs_B-trutta_min_B
+
