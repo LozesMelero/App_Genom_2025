@@ -19,4 +19,6 @@
 ### 3. Script R 
 - `App_Genom.R` script R utilisé pour les analyses statistiques et la création de graphiques se situe dans la dossier `Bin/Poisson`. Ce script à été consrtruit de sorte à pouvoir être utiliser en téléchargeant le présent répertoir GitHub.
 
-![](./Logo_UT3.jpg) ![](./truite_image.jpg)
+| ![](./Logo_UT3.jpg){width=150px} | ![](./truite_image.jpg){width=150px} |
+|----------------------------------|-------------------------------------|
+| Logo Université Paul Sabatier    | Photo de truite                    |
